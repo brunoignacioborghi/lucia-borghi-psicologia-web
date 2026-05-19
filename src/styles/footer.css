@@ -1,0 +1,33 @@
+.footer {
+  padding: 80px 10%;
+
+  text-align: center;
+
+  background: #efe5d9;
+}
+
+.footer h3 {
+  font-size: 42px;
+
+  color: var(--primary);
+
+  margin-bottom: 30px;
+}
+
+.footer_links {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 40px;
+
+  margin-bottom: 30px;
+}
+
+.footer_links a {
+  color: var(--text);
+}
+
+.footer p {
+  opacity: 0.7;
+}

@@ -1,0 +1,91 @@
+.about_preview,
+.about_page {
+  text-align: center;
+}
+
+.about_preview h2,
+.about_page h1 {
+  font-size: 75px;
+
+  color: var(--primary);
+
+  margin-bottom: 40px;
+}
+
+.about_preview p,
+.about_page p {
+  max-width: 900px;
+
+  margin: 20px auto;
+
+  line-height: 2;
+
+  font-size: 18px;
+}
+
+.about_preview a {
+  display: inline-block;
+
+  margin-top: 30px;
+
+  color: var(--primary);
+
+  font-weight: 600;
+}
+
+.about_page img {
+  width: 320px;
+
+  border-radius: 30px;
+
+  margin-bottom: 50px;
+
+  box-shadow: var(--shadow);
+}
+
+.about_preview {
+  position: relative;
+}
+
+.leaf_decoration {
+  position: absolute;
+
+  width: 180px;
+
+  right: 5%;
+  top: 20%;
+
+  opacity: 0.2;
+}
+
+.about_preview {
+  position: relative;
+
+  overflow: hidden;
+}
+
+.about_blob {
+  position: absolute;
+
+  width: 500px;
+
+  left: -220px;
+  top: -120px;
+
+  opacity: 0.08;
+
+  z-index: -1;
+}
+
+.about_leaf {
+  position: absolute;
+
+  width: 220px;
+
+  right: 0;
+  bottom: -40px;
+
+  opacity: 0.2;
+
+  animation: leafFloat 7s ease-in-out infinite;
+}

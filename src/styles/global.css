@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  --primary: #b56b3b;
+  --primary-dark: #94542b;
+
+  --green: #6d7454;
+
+  --bg: #f7f2eb;
+
+  --card: rgba(255,255,255,0.7);
+
+  --text: #40352f;
+
+  --shadow:
+    0 10px 30px rgba(0,0,0,0.05);
+
+  --radius: 30px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+section {
+  padding: 120px 10%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.container {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.fade_up {
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+.faq {
+  max-width: 900px;
+
+  margin: auto;
+}
+
+.faq h2 {
+  text-align: center;
+
+  font-size: 70px;
+
+  color: var(--primary);
+
+  margin-bottom: 60px;
+}
+
+.faq_item {
+  background: white;
+
+  margin-bottom: 20px;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  box-shadow: var(--shadow);
+}
+
+.faq_item button {
+  width: 100%;
+
+  border: none;
+
+  background: white;
+
+  padding: 30px;
+
+  text-align: left;
+
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+.faq_item p {
+  padding: 0 30px 30px;
+
+  line-height: 1.8;
+}
