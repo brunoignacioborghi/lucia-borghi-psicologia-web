@@ -2,28 +2,18 @@ import "../styles/about.css";
 
 import { Link } from "react-router-dom";
 
-import leaf2 from "../assets/decorations/leaf2.png";
-import blob from "../assets/decorations/blob.png";
+import leaf from "../assets/decorations/leaf.png";
 
 function AboutPreview() {
 
   return (
 
-    <section
-      className="about_preview"
-      id="about"
-    >
+    <section className="about_preview">
 
       <img
-        src={blob}
+        src={leaf}
         alt=""
-        className="about_blob"
-      />
-
-      <img
-        src={leaf2}
-        alt=""
-        className="about_leaf"
+        className="leaf_decoration"
       />
 
       <h2>
@@ -31,18 +21,18 @@ function AboutPreview() {
       </h2>
 
       <p>
+
         Soy Lucía Borghi, psicóloga clínica y sociocomunitaria dedicada a acompañar procesos emocionales individuales y grupales desde una mirada cercana, humana y profesional.
+
       </p>
 
       <p>
-        Mi objetivo es brindarte un espacio seguro donde puedas comprender lo que te sucede, desarrollar mayor claridad sobre tus emociones y encontrar herramientas para sentirte mejor.
+
+        Mi objetivo es brindarte un espacio seguro donde puedas comprender lo que te sucede y encontrar herramientas para sentirte mejor.
+
       </p>
 
-      <p>
-        Trabajo desde la psicoterapia con enfoque gestáltico y también acompaño procesos de orientación vocacional ocupacional.
-      </p>
-
-      <Link to="/about">
+      <Link to="/sobre-mi">
 
         Leer más
 
