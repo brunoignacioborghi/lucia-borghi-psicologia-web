@@ -36,8 +36,11 @@ function Faq() {
       />
 
       <Item
-        question="¿Cuánto dura cada sesión?"
-        answer="Generalmente entre 45 y 60 minutos."
+        question="¿Cómo son las sesiones?"
+        answer="Las sesiones tienen una duración aproximada de 45 minutos a 1 hora.
+La frecuencia puede ser semanal, quincenal o mensual, dependiendo de las necesidades, objetivos y posibilidades de cada persona. El proceso terapéutico se construye de manera personalizada, buscando que el espacio sea accesible y adecuado para cada situación.
+Las sesiones pueden realizarse de forma presencial o virtual. 
+"
       />
 
     </section>
