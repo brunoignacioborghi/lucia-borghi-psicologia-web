@@ -15,6 +15,8 @@ import Admin from "./pages/Admin";
 
 import PostDetail from "./pages/PostDetail";
 
+import About from "./pages/About";
+
 function App() {
 
   const location = useLocation();
@@ -54,6 +56,11 @@ function App() {
           <Route
             path="/contenido/:id"
             element={<PostDetail />}
+          />
+
+          <Route
+            path="/sobre-mi"
+            element={<About />}
           />
 
         </Routes>
