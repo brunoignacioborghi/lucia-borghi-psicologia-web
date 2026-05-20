@@ -4,7 +4,7 @@ import leaf from "../assets/decorations/leaf.png";
 
 function AboutPreview() {
   return (
-    <section className="about_preview">
+    <section className="about_preview" id="about">
 
       <img
         src={leaf}
