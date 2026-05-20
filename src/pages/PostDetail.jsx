@@ -19,10 +19,28 @@ function PostDetail() {
   return (
     <section className="post_detail">
 
-      <img
-        src={post.image}
-        alt=""
-      />
+      {
+        post.mediaType === "video"
+
+            ? (
+
+            <video
+                src={post.media}
+                controls
+                className="post_media"
+            />
+
+            )
+
+            : (
+
+            <img
+                src={post.media}
+                alt=""
+            />
+
+            )
+        }
 
       <small>
         {post.date}

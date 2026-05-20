@@ -32,10 +32,27 @@ function Blog() {
             key={post.id}
           >
 
-            <img
-              src={post.image}
-              alt=""
-            />
+            {
+            post.mediaType === "video"
+
+                ? (
+
+                <video
+                    src={post.media}
+                    controls
+                />
+
+                )
+
+                : (
+
+                <img
+                    src={post.media}
+                    alt=""
+                />
+
+                )
+            }
 
             <div className="blog_content">
 

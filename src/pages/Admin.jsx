@@ -12,7 +12,10 @@ function Admin() {
 
   const [fullText, setFullText] = useState("");
 
-  const [image, setImage] = useState("");
+  const [media, setMedia] = useState("");
+
+  const [mediaType, setMediaType] =
+    useState("");
 
   const [editingId, setEditingId] =
     useState(null);
@@ -23,7 +26,7 @@ function Admin() {
 
   );
 
-  const handleImage = (e) => {
+  const handleMedia = (e) => {
 
     const file = e.target.files[0];
 
@@ -32,18 +35,39 @@ function Admin() {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      setImage(reader.result);
+
+      setMedia(reader.result);
+
+      if (
+        file.type.startsWith("video")
+      ) {
+
+        setMediaType("video");
+
+      } else {
+
+        setMediaType("image");
+
+      }
+
     };
 
     reader.readAsDataURL(file);
+
   };
 
   const clearForm = () => {
 
     setTitle("");
+
     setText("");
+
     setFullText("");
-    setImage("");
+
+    setMedia("");
+
+    setMediaType("");
+
     setEditingId(null);
 
   };
@@ -65,7 +89,7 @@ function Admin() {
       !title ||
       !text ||
       !fullText ||
-      !image
+      !media
     ) {
       return;
     }
@@ -82,7 +106,8 @@ function Admin() {
                 title,
                 text,
                 fullText,
-                image
+                media,
+                mediaType
               }
 
             : post
@@ -103,7 +128,9 @@ function Admin() {
 
         fullText,
 
-        image,
+        media,
+
+        mediaType,
 
         date:
           new Date().toLocaleDateString()
@@ -140,7 +167,9 @@ function Admin() {
 
     setFullText(post.fullText);
 
-    setImage(post.image);
+    setMedia(post.media);
+
+    setMediaType(post.mediaType);
 
     setEditingId(post.id);
 
@@ -152,6 +181,7 @@ function Admin() {
   };
 
   return (
+
     <section className="admin_page">
 
       <div className="admin_form">
@@ -187,18 +217,36 @@ function Admin() {
 
         <input
           type="file"
-          accept="image/*"
-          onChange={handleImage}
+          accept="image/*,video/*"
+          onChange={handleMedia}
         />
 
         {
-          image && (
+
+          media && mediaType === "image" && (
+
             <img
-              src={image}
+              src={media}
               alt=""
               className="preview_image"
             />
+
           )
+
+        }
+
+        {
+
+          media && mediaType === "video" && (
+
+            <video
+              src={media}
+              controls
+              className="preview_image"
+            />
+
+          )
+
         }
 
         <button onClick={publishPost}>
@@ -228,10 +276,29 @@ function Admin() {
               key={post.id}
             >
 
-              <img
-                src={post.image}
-                alt=""
-              />
+              {
+
+                post.mediaType === "video"
+
+                  ? (
+
+                    <video
+                      src={post.media}
+                      controls
+                    />
+
+                  )
+
+                  : (
+
+                    <img
+                      src={post.media}
+                      alt=""
+                    />
+
+                  )
+
+              }
 
               <div>
 
@@ -282,6 +349,7 @@ function Admin() {
       </div>
 
     </section>
+
   );
 }
 
