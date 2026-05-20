@@ -124,3 +124,16 @@
   }
 
 }
+
+.blog_video {
+
+  width: 100%;
+
+  height: 260px;
+
+  object-fit: cover;
+
+  border-radius: 25px 25px 0 0;
+
+  display: block;
+}

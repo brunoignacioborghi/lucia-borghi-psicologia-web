@@ -40,7 +40,8 @@ function Blog() {
                 <video
                     src={post.media}
                     controls
-                />
+                    className="blog_video"
+                    />
 
                 )
 

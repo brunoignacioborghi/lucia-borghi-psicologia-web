@@ -283,8 +283,9 @@ function Admin() {
                   ? (
 
                     <video
-                      src={post.media}
-                      controls
+                    src={post.media}
+                    controls
+                    className="admin_video"
                     />
 
                   )
