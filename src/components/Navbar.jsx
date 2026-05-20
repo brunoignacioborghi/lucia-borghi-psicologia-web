@@ -1,6 +1,22 @@
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useLocation
+}
 
-import { Link as ScrollLink } from "react-scroll";
+from "react-router-dom";
+
+import {
+  Link as ScrollLink
+}
+
+from "react-scroll";
+
+import {
+  useState
+}
+
+from "react";
 
 import "../styles/navbar.css";
 
@@ -12,7 +28,12 @@ function Navbar() {
 
   const location = useLocation();
 
+  const [menuOpen, setMenuOpen] =
+    useState(false);
+
   const goHome = () => {
+
+    setMenuOpen(false);
 
     if (location.pathname !== "/") {
 
@@ -39,6 +60,7 @@ function Navbar() {
   };
 
   return (
+
     <nav className="navbar">
 
       <div className="navbar_container">
@@ -51,60 +73,120 @@ function Navbar() {
           <img src={logo} alt="" />
 
           <h2>
+
             ENCONTRARSE
+
             <br />
 
             Lic. Borghi Lucía Ivanna
+
             <br />
 
             Psicoterapia y Orientación
             Vocacional y Ocupacional
-            </h2>
+
+          </h2>
 
         </div>
 
-        <div className="nav_links">
+        <button
+          className="menu_toggle"
 
-          <button onClick={goHome}>
+          onClick={() =>
+            setMenuOpen(!menuOpen)
+          }
+        >
+
+          ☰
+
+        </button>
+
+        <div
+          className={`nav_links ${
+            menuOpen ? "active" : ""
+          }`}
+        >
+
+          <button
+            onClick={() => {
+
+              goHome();
+
+              setMenuOpen(false);
+
+            }}
+          >
+
             Inicio
+
           </button>
 
-         <>
-  <ScrollLink
-    to="about"
-    smooth={true}
-    duration={800}
-    offset={-100}
-    style={{ cursor: "pointer" }}
-  >
-    Sobre mí
-  </ScrollLink>
+          <ScrollLink
+            to="about"
+            smooth={true}
+            duration={800}
+            offset={-100}
 
-  <ScrollLink
-    to="therapy"
-    smooth={true}
-    duration={800}
-    offset={-100}
-    style={{ cursor: "pointer" }}
-  >
-    Terapia
-  </ScrollLink>
-</>
+            style={{ cursor: "pointer" }}
 
-          <Link to="/contacto">
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+
+            Sobre mí
+
+          </ScrollLink>
+
+          <ScrollLink
+            to="therapy"
+            smooth={true}
+            duration={800}
+            offset={-100}
+
+            style={{ cursor: "pointer" }}
+
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+
+            Terapia
+
+          </ScrollLink>
+
+          <Link
+            to="/contacto"
+
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+
             Contacto
+
           </Link>
 
-          <Link to="/contenido">
+          <Link
+            to="/contenido"
+
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+
             Contenido
-            </Link>
+
+          </Link>
 
         </div>
 
       </div>
 
     </nav>
+
   );
+
 }
 
 export default Navbar;
