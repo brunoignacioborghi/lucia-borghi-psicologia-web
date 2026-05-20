@@ -63,30 +63,30 @@ function Navbar() {
           </button>
 
           {
-            location.pathname === "/" && (
+  location.pathname === "/" && (
 
-              <>
-                <ScrollLink
-                  to="about"
-                  smooth={true}
-                  duration={800}
-                  offset={-100}
-                >
-                  Sobre mí
-                </ScrollLink>
+    <>
+      <ScrollLink
+        to="about"
+        smooth={true}
+        duration={800}
+        offset={-100}
+      >
+        Sobre mí
+      </ScrollLink>
 
-                <ScrollLink
-                  to="therapy"
-                  smooth={true}
-                  duration={800}
-                  offset={-100}
-                >
-                  Terapia
-                </ScrollLink>
-              </>
+      <ScrollLink
+        to="therapy"
+        smooth={true}
+        duration={800}
+        offset={-100}
+      >
+        Terapia
+      </ScrollLink>
+    </>
 
-            )
-          }
+  )
+}
 
           <Link to="/contacto">
             Contacto
