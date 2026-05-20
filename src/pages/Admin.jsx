@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { v4 as uuid } from "uuid";
+import axios from "axios";
 
 import "../styles/admin.css";
 
@@ -20,11 +20,36 @@ function Admin() {
   const [editingId, setEditingId] =
     useState(null);
 
-  const [posts, setPosts] = useState(
+  const [posts, setPosts] =
+    useState([]);
 
-    JSON.parse(localStorage.getItem("posts")) || []
+  /* LOAD POSTS */
 
-  );
+  useEffect(() => {
+
+    fetchPosts();
+
+  }, []);
+
+  const fetchPosts = async () => {
+
+    try {
+
+      const res = await axios.get(
+        "http://localhost:5000/posts"
+      );
+
+      setPosts(res.data);
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
+
+  };
+
+  /* HANDLE MEDIA */
 
   const handleMedia = (e) => {
 
@@ -56,6 +81,8 @@ function Admin() {
 
   };
 
+  /* CLEAR FORM */
+
   const clearForm = () => {
 
     setTitle("");
@@ -72,18 +99,9 @@ function Admin() {
 
   };
 
-  const savePosts = (updatedPosts) => {
+  /* CREATE / UPDATE */
 
-    setPosts(updatedPosts);
-
-    localStorage.setItem(
-      "posts",
-      JSON.stringify(updatedPosts)
-    );
-
-  };
-
-  const publishPost = () => {
+  const publishPost = async () => {
 
     if (
       !title ||
@@ -94,70 +112,78 @@ function Admin() {
       return;
     }
 
-    if (editingId) {
+    try {
 
-      const updatedPosts =
-        posts.map((post) =>
+      if (editingId) {
 
-          post.id === editingId
+        await axios.put(
 
-            ? {
-                ...post,
-                title,
-                text,
-                fullText,
-                media,
-                mediaType
-              }
+          `http://localhost:5000/posts/${editingId}`,
 
-            : post
+          {
+            title,
+            text,
+            fullText,
+            media,
+            mediaType
+          }
 
         );
 
-      savePosts(updatedPosts);
+      } else {
 
-    } else {
+        await axios.post(
 
-      const newPost = {
+          "http://localhost:5000/posts",
 
-        id: uuid(),
+          {
+            title,
+            text,
+            fullText,
+            media,
+            mediaType,
 
-        title,
+            date:
+              new Date().toLocaleDateString()
+          }
 
-        text,
+        );
 
-        fullText,
+      }
 
-        media,
+      fetchPosts();
 
-        mediaType,
+      clearForm();
 
-        date:
-          new Date().toLocaleDateString()
+    } catch (err) {
 
-      };
-
-      const updatedPosts = [
-        newPost,
-        ...posts
-      ];
-
-      savePosts(updatedPosts);
+      console.log(err);
 
     }
 
-    clearForm();
+  };
+
+  /* DELETE */
+
+  const deletePost = async (id) => {
+
+    try {
+
+      await axios.delete(
+        `http://localhost:5000/posts/${id}`
+      );
+
+      fetchPosts();
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
 
   };
 
-  const deletePost = (id) => {
-
-    const updatedPosts =
-      posts.filter((post) => post.id !== id);
-
-    savePosts(updatedPosts);
-
-  };
+  /* EDIT */
 
   const editPost = (post) => {
 
@@ -171,7 +197,7 @@ function Admin() {
 
     setMediaType(post.mediaType);
 
-    setEditingId(post.id);
+    setEditingId(post._id);
 
     window.scrollTo({
       top: 0,
@@ -223,7 +249,8 @@ function Admin() {
 
         {
 
-          media && mediaType === "image" && (
+          media &&
+          mediaType === "image" && (
 
             <img
               src={media}
@@ -237,7 +264,8 @@ function Admin() {
 
         {
 
-          media && mediaType === "video" && (
+          media &&
+          mediaType === "video" && (
 
             <video
               src={media}
@@ -252,9 +280,11 @@ function Admin() {
         <button onClick={publishPost}>
 
           {
+
             editingId
               ? "Actualizar"
               : "Publicar"
+
           }
 
         </button>
@@ -273,7 +303,7 @@ function Admin() {
 
             <div
               className="admin_post_card"
-              key={post.id}
+              key={post._id}
             >
 
               {
@@ -283,9 +313,9 @@ function Admin() {
                   ? (
 
                     <video
-                    src={post.media}
-                    controls
-                    className="admin_video"
+                      src={post.media}
+                      controls
+                      className="admin_video"
                     />
 
                   )
@@ -331,7 +361,7 @@ function Admin() {
                   className="delete_btn"
 
                   onClick={() =>
-                    deletePost(post.id)
+                    deletePost(post._id)
                   }
                 >
 

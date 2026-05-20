@@ -1,4 +1,17 @@
-import { useParams } from "react-router-dom";
+import {
+  useEffect,
+  useState
+}
+
+from "react";
+
+import axios from "axios";
+
+import {
+  useParams
+}
+
+from "react-router-dom";
 
 import "../styles/postdetail.css";
 
@@ -6,41 +19,66 @@ function PostDetail() {
 
   const { id } = useParams();
 
-  const posts =
-    JSON.parse(localStorage.getItem("posts")) || [];
+  const [post, setPost] =
+    useState(null);
 
-  const post =
-    posts.find((p) => p.id === id);
+  useEffect(() => {
+
+    axios.get(
+      "http://localhost:5000/posts"
+    )
+
+    .then((res) => {
+
+      const foundPost =
+        res.data.find(
+          (p) => p._id === id
+        );
+
+      setPost(foundPost);
+
+    });
+
+  }, [id]);
 
   if (!post) {
-    return <h1>Post no encontrado</h1>;
+
+    return (
+      <h1>
+        Post no encontrado
+      </h1>
+    );
+
   }
 
   return (
+
     <section className="post_detail">
 
       {
+
         post.mediaType === "video"
 
-            ? (
+          ? (
 
             <video
-                src={post.media}
-                controls
-                className="post_media"
+              src={post.media}
+              controls
+              className="post_media"
             />
 
-            )
+          )
 
-            : (
+          : (
 
             <img
-                src={post.media}
-                alt=""
+              src={post.media}
+              alt=""
             />
 
-            )
-        }
+          )
+
+      }
 
       <small>
         {post.date}
@@ -55,6 +93,7 @@ function PostDetail() {
       </p>
 
     </section>
+
   );
 }
 

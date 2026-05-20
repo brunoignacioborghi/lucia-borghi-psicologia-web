@@ -1,13 +1,34 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState }
+from "react";
+
+import axios from "axios";
+
+import { Link }
+from "react-router-dom";
 
 import "../styles/blog.css";
 
 function Blog() {
 
-  const posts =
-    JSON.parse(localStorage.getItem("posts")) || [];
+  const [posts, setPosts] =
+    useState([]);
+
+  useEffect(() => {
+
+    axios.get(
+      "http://localhost:5000/posts"
+    )
+
+    .then((res) => {
+
+      setPosts(res.data);
+
+    });
+
+  }, []);
 
   return (
+
     <section className="blog_page">
 
       <div className="blog_header">
@@ -25,69 +46,76 @@ function Blog() {
 
       <div className="blog_grid">
 
-        {posts.map((post) => (
+        {
 
-          <article
-            className="blog_card"
-            key={post.id}
-          >
+          posts.map((post) => (
 
-            {
-            post.mediaType === "video"
+            <article
+              className="blog_card"
+              key={post._id}
+            >
 
-                ? (
+              {
 
-                <video
-                    src={post.media}
-                    controls
-                    className="blog_video"
+                post.mediaType === "video"
+
+                  ? (
+
+                    <video
+                      src={post.media}
+                      controls
+                      className="blog_video"
                     />
 
-                )
+                  )
 
-                : (
+                  : (
 
-                <img
-                    src={post.media}
-                    alt=""
-                />
+                    <img
+                      src={post.media}
+                      alt=""
+                    />
 
-                )
-            }
+                  )
 
-            <div className="blog_content">
+              }
 
-              <small>
-                {post.date}
-              </small>
+              <div className="blog_content">
 
-              <h2>
-                {post.title}
-              </h2>
+                <small>
+                  {post.date}
+                </small>
 
-              <p>
-                {post.text}
-              </p>
+                <h2>
+                  {post.title}
+                </h2>
 
-              <Link
-                to={`/contenido/${post.id}`}
-              >
+                <p>
+                  {post.text}
+                </p>
 
-                <button>
-                  Leer más
-                </button>
+                <Link
+                  to={`/contenido/${post._id}`}
+                >
 
-              </Link>
+                  <button>
+                    Leer más
+                  </button>
 
-            </div>
+                </Link>
 
-          </article>
+              </div>
 
-        ))}
+            </article>
+
+          ))
+
+        }
 
       </div>
 
     </section>
+
   );
 }
 
