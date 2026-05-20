@@ -1,14 +1,18 @@
 .admin_page {
+
   min-height: 100vh;
 
   display: flex;
 
-  justify-content: center;
+  flex-direction: column;
 
   align-items: center;
+
+  padding: 160px 10% 100px;
 }
 
 .admin_form {
+
   width: 100%;
 
   max-width: 700px;
@@ -29,15 +33,21 @@
 }
 
 .admin_form h1 {
+
   font-size: 60px;
 
   color: var(--primary);
 
   margin-bottom: 20px;
+
+  line-height: 1;
 }
 
 .admin_form input,
 .admin_form textarea {
+
+  width: 100%;
+
   padding: 20px;
 
   border-radius: 20px;
@@ -47,15 +57,19 @@
   background: #f7f2eb;
 
   font-size: 16px;
+
+  font-family: inherit;
 }
 
 .admin_form textarea {
-  min-height: 160px;
+
+  min-height: 180px;
 
   resize: vertical;
 }
 
 .admin_form button {
+
   background: var(--primary);
 
   color: white;
@@ -67,10 +81,21 @@
   border-radius: 999px;
 
   cursor: pointer;
+
+  font-size: 16px;
+
+  transition: 0.3s;
 }
 
+.admin_form button:hover {
+
+  background: var(--primary-dark);
+
+  transform: translateY(-3px);
+}
 
 .preview_image {
+
   width: 100%;
 
   height: 300px;
@@ -80,7 +105,12 @@
   border-radius: 25px;
 }
 
+/* ======================= */
+/* POSTS */
+/* ======================= */
+
 .admin_posts {
+
   width: 100%;
 
   max-width: 1100px;
@@ -89,6 +119,7 @@
 }
 
 .admin_posts h2 {
+
   font-size: 50px;
 
   color: var(--primary);
@@ -97,6 +128,7 @@
 }
 
 .admin_post_card {
+
   background: white;
 
   padding: 25px;
@@ -115,6 +147,7 @@
 }
 
 .admin_post_card img {
+
   width: 180px;
 
   height: 130px;
@@ -122,28 +155,40 @@
   object-fit: cover;
 
   border-radius: 20px;
+
+  min-width: 180px;
 }
 
 .admin_post_card h3 {
+
   margin-bottom: 10px;
 
   font-size: 28px;
+
+  line-height: 1.1;
 }
 
 .admin_post_card p {
+
   opacity: 0.7;
+
+  line-height: 1.7;
 }
 
 .admin_actions {
+
   margin-left: auto;
 
   display: flex;
 
   gap: 15px;
+
+  flex-wrap: wrap;
 }
 
 .edit_btn,
 .delete_btn {
+
   border: none;
 
   padding: 14px 22px;
@@ -153,57 +198,125 @@
   cursor: pointer;
 
   color: white;
+
+  transition: 0.3s;
 }
 
 .edit_btn {
+
   background: #6d7454;
 }
 
 .delete_btn {
+
   background: #b85656;
 }
 
-@media(max-width: 900px) {
+.edit_btn:hover,
+.delete_btn:hover {
 
-  .admin_post_card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .admin_actions {
-    margin-left: 0;
-  }
-
+  transform: translateY(-3px);
 }
+
+/* ======================= */
+/* MOBILE */
+/* ======================= */
 
 @media(max-width: 900px) {
 
   .admin_page {
-    padding-top: 140px;
+
+    padding: 140px 5% 80px;
   }
 
   .admin_form {
-    padding: 35px;
+
+    padding: 30px;
+
+    border-radius: 30px;
   }
 
   .admin_form h1 {
+
     font-size: 42px;
+
+    text-align: center;
   }
 
-  .admin_post_card {
-    flex-direction: column;
+  .admin_form input,
+  .admin_form textarea {
 
-    align-items: flex-start;
+    padding: 18px;
+
+    font-size: 15px;
   }
 
-  .admin_post_card img {
-    width: 100%;
+  .preview_image {
 
     height: 220px;
   }
 
+  .admin_posts {
+
+    margin-top: 50px;
+  }
+
+  .admin_posts h2 {
+
+    font-size: 38px;
+
+    text-align: center;
+
+    margin-bottom: 30px;
+  }
+
+  .admin_post_card {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 20px;
+
+    border-radius: 25px;
+  }
+
+  .admin_post_card img {
+
+    width: 100%;
+
+    height: 220px;
+
+    min-width: 100%;
+  }
+
+  .admin_post_card h3 {
+
+    font-size: 24px;
+  }
+
+  .admin_post_card p {
+
+    font-size: 15px;
+  }
+
   .admin_actions {
+
+    width: 100%;
+
     margin-left: 0;
+
+    justify-content: space-between;
+  }
+
+  .edit_btn,
+  .delete_btn {
+
+    flex: 1;
+
+    text-align: center;
+
+    padding: 14px;
   }
 
 }
