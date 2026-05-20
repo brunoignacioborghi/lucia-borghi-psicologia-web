@@ -15,15 +15,11 @@ function AboutPreview() {
       <h2>Sobre mí</h2>
 
       <p>
-        Soy Lucía Borghi, psicóloga dedicada a acompañar
-        procesos emocionales desde una mirada cercana,
-        humana y profesional.
+        Soy Lucía Borghi, psicóloga clínica y sociocomunitaria dedicada a acompañar procesos emocionales individuales y grupales desde una mirada cercana, humana y profesional. 
       </p>
 
       <p>
-        Mi objetivo es brindarte un espacio seguro donde
-        puedas comprender lo que te sucede y encontrar
-        herramientas para sentirte mejor.
+        Mi objetivo es brindarte un espacio seguro donde puedas comprender lo que te sucede, desarrollar mayor claridad sobre tus emociones y encontrar herramientas para sentirte mejor. 
       </p>
 
       <a href="/sobre-mi">
