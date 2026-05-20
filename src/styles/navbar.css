@@ -127,3 +127,29 @@
 .logo_container {
   cursor: pointer;
 }
+
+@media(max-width: 900px) {
+
+  .navbar {
+    padding: 20px 5%;
+  }
+
+  .navbar_container {
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .nav_links {
+    gap: 18px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+  .logo_container h2 {
+    font-size: 20px;
+  }
+
+}

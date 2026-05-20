@@ -89,3 +89,27 @@
 
   animation: leafFloat 7s ease-in-out infinite;
 }
+
+@media(max-width: 900px) {
+
+  .about_preview {
+    padding: 100px 8%;
+
+    text-align: center;
+  }
+
+  .about_preview h2 {
+    font-size: 48px;
+  }
+
+  .about_preview p {
+    font-size: 16px;
+
+    line-height: 1.9;
+  }
+
+  .about_leaf {
+    width: 120px;
+  }
+
+}

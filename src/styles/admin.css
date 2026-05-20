@@ -175,3 +175,35 @@
   }
 
 }
+
+@media(max-width: 900px) {
+
+  .admin_page {
+    padding-top: 140px;
+  }
+
+  .admin_form {
+    padding: 35px;
+  }
+
+  .admin_form h1 {
+    font-size: 42px;
+  }
+
+  .admin_post_card {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .admin_post_card img {
+    width: 100%;
+
+    height: 220px;
+  }
+
+  .admin_actions {
+    margin-left: 0;
+  }
+
+}

@@ -146,3 +146,47 @@
   }
 
 }
+
+
+@media(max-width: 900px) {
+
+  .hero {
+    flex-direction: column;
+
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 60px;
+
+    padding-top: 140px;
+  }
+
+  .hero_left h1 {
+    font-size: 58px;
+  }
+
+  .hero_left p {
+    font-size: 16px;
+
+    margin: auto auto 35px;
+  }
+
+  .hero_main_img {
+    max-width: 100%;
+  }
+
+  .hero_blob {
+    width: 500px;
+
+    top: -120px;
+    right: -200px;
+  }
+
+  .hero_leaf {
+    width: 120px;
+
+    right: 0;
+  }
+
+}
