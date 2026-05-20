@@ -51,7 +51,10 @@ function Navbar() {
           <img src={logo} alt="" />
 
           <h2>
-            Lucía Borghi
+            ENCONTRARSE
+            Lic. Borghi Lucía Ivanna
+            Psicoterapia y Orientación Vocacional y Ocupacional
+
           </h2>
 
         </div>

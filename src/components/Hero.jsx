@@ -31,7 +31,7 @@ function Hero() {
         <h3>ANIMATE A</h3>
 
         <h1>
-          empezar terapia
+          Empezar Terapia
         </h1>
 
         <p>
