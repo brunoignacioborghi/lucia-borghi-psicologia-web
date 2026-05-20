@@ -10,7 +10,7 @@ function AboutPreview() {
   return (
 
     <section
-      className="about_preview fade_up"
+      className="about_preview"
       id="about"
     >
 
@@ -31,27 +31,18 @@ function AboutPreview() {
       </h2>
 
       <p>
-
         Soy Lucía Borghi, psicóloga clínica y sociocomunitaria dedicada a acompañar procesos emocionales individuales y grupales desde una mirada cercana, humana y profesional.
-
       </p>
 
       <p>
-
         Mi objetivo es brindarte un espacio seguro donde puedas comprender lo que te sucede, desarrollar mayor claridad sobre tus emociones y encontrar herramientas para sentirte mejor.
-
       </p>
 
       <p>
-
         Trabajo desde la psicoterapia con enfoque gestáltico y también acompaño procesos de orientación vocacional ocupacional.
-
       </p>
 
-      <Link
-        to="/about"
-        className="about_more"
-      >
+      <Link to="/about">
 
         Leer más
 
