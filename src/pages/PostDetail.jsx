@@ -25,7 +25,7 @@ function PostDetail() {
   useEffect(() => {
 
     axios.get(
-      "http://localhost:5000/posts"
+      "https://render.com/docs/web-services#port-binding/posts"
     )
 
     .then((res) => {

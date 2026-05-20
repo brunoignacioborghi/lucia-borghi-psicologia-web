@@ -36,7 +36,7 @@ function Admin() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/posts"
+        "https://lucia-borghi-web.onrender.com/posts"
       );
 
       setPosts(res.data);
@@ -104,13 +104,12 @@ function Admin() {
   const publishPost = async () => {
 
     if (
-      !title ||
-      !text ||
-      !fullText ||
-      !media
-    ) {
-      return;
-    }
+  !title ||
+  !text ||
+  !fullText
+) {
+  return;
+}
 
     try {
 
@@ -118,7 +117,7 @@ function Admin() {
 
         await axios.put(
 
-          `http://localhost:5000/posts/${editingId}`,
+          `https://lucia-borghi-web.onrender.com/posts/${editingId}`,
 
           {
             title,
@@ -134,7 +133,7 @@ function Admin() {
 
         await axios.post(
 
-          "http://localhost:5000/posts",
+          "https://lucia-borghi-web.onrender.com/posts",
 
           {
             title,
@@ -170,8 +169,8 @@ function Admin() {
     try {
 
       await axios.delete(
-        `http://localhost:5000/posts/${id}`
-      );
+    `https://lucia-borghi-web.onrender.com/posts/${id}`
+    );
 
       fetchPosts();
 

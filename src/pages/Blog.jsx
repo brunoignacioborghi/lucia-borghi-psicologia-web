@@ -16,7 +16,7 @@ function Blog() {
   useEffect(() => {
 
     axios.get(
-      "http://localhost:5000/posts"
+      "https://lucia-borghi-web.onrender.com/posts"
     )
 
     .then((res) => {
