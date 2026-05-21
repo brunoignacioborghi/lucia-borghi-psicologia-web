@@ -1,18 +1,32 @@
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState
+}
+
+from "react";
 
 import axios from "axios";
 
+import { motion }
+from "framer-motion";
+
 import "../styles/admin.css";
+
+import Loader from "../components/Loader";
 
 function Admin() {
 
-  const [title, setTitle] = useState("");
+  const [title, setTitle] =
+    useState("");
 
-  const [text, setText] = useState("");
+  const [text, setText] =
+    useState("");
 
-  const [fullText, setFullText] = useState("");
+  const [fullText, setFullText] =
+    useState("");
 
-  const [media, setMedia] = useState("");
+  const [media, setMedia] =
+    useState("");
 
   const [mediaType, setMediaType] =
     useState("");
@@ -22,6 +36,9 @@ function Admin() {
 
   const [posts, setPosts] =
     useState([]);
+
+  const [loading, setLoading] =
+    useState(true);
 
   /* LOAD POSTS */
 
@@ -41,9 +58,13 @@ function Admin() {
 
       setPosts(res.data);
 
+      setLoading(false);
+
     } catch (err) {
 
       console.log(err);
+
+      setLoading(false);
 
     }
 
@@ -104,12 +125,12 @@ function Admin() {
   const publishPost = async () => {
 
     if (
-  !title ||
-  !text ||
-  !fullText
-) {
-  return;
-}
+      !title ||
+      !text ||
+      !fullText
+    ) {
+      return;
+    }
 
     try {
 
@@ -169,8 +190,8 @@ function Admin() {
     try {
 
       await axios.delete(
-    `https://lucia-borghi-web.onrender.com/posts/${id}`
-    );
+        `https://lucia-borghi-web.onrender.com/posts/${id}`
+      );
 
       fetchPosts();
 
@@ -205,11 +226,34 @@ function Admin() {
 
   };
 
+  if (loading) {
+
+    return <Loader />;
+
+  }
+
   return (
 
     <section className="admin_page">
 
-      <div className="admin_form">
+      <motion.div
+
+        className="admin_form"
+
+        initial={{
+          opacity: 0,
+          y: 40
+        }}
+
+        animate={{
+          opacity: 1,
+          y: 0
+        }}
+
+        transition={{
+          duration: 0.8
+        }}
+      >
 
         <h1>
           Panel de contenido
@@ -240,11 +284,17 @@ function Admin() {
           }
         />
 
-        <input
-          type="file"
-          accept="image/*,video/*"
-          onChange={handleMedia}
-        />
+        <label className="custom_file_upload">
+
+          Seleccionar archivo
+
+          <input
+            type="file"
+            accept="image/*,video/*"
+            onChange={handleMedia}
+          />
+
+        </label>
 
         {
 
@@ -288,7 +338,7 @@ function Admin() {
 
         </button>
 
-      </div>
+      </motion.div>
 
       <div className="admin_posts">
 
@@ -298,11 +348,28 @@ function Admin() {
 
         {
 
-          posts.map((post) => (
+          posts.map((post, index) => (
 
-            <div
+            <motion.div
+
               className="admin_post_card"
+
               key={post._id}
+
+              initial={{
+                opacity: 0,
+                y: 40
+              }}
+
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
+
+              transition={{
+                duration: 0.7,
+                delay: index * 0.1
+              }}
             >
 
               {
@@ -370,7 +437,7 @@ function Admin() {
 
               </div>
 
-            </div>
+            </motion.div>
 
           ))
 
