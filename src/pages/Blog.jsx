@@ -1,4 +1,8 @@
-import { useEffect, useState }
+import {
+  useEffect,
+  useState
+}
+
 from "react";
 
 import axios from "axios";
@@ -6,9 +10,10 @@ import axios from "axios";
 import { Link }
 from "react-router-dom";
 
-import "../styles/blog.css";
+import { motion }
+from "framer-motion";
 
-import Loader from "../components/Loader";
+import "../styles/blog.css";
 
 function Blog() {
 
@@ -16,7 +21,7 @@ function Blog() {
     useState([]);
 
   const [loading, setLoading] =
-  useState(true);
+    useState(true);
 
   useEffect(() => {
 
@@ -26,21 +31,37 @@ function Blog() {
 
     .then((res) => {
 
-        setPosts(res.data);
+      setPosts(res.data);
 
-        setLoading(false);
+      setLoading(false);
 
-        });
-    
+    })
+
+    .catch(() => {
+
+      setLoading(false);
+
+    });
 
   }, []);
 
-
   if (loading) {
 
-  return <Loader />;
+    return (
 
-}
+      <div className="loader_container">
+
+        <div className="loader_circle"></div>
+
+        <p>
+          cargando contenido...
+        </p>
+
+      </div>
+
+    );
+
+  }
 
   return (
 
@@ -63,11 +84,28 @@ function Blog() {
 
         {
 
-          posts.map((post) => (
+          posts.map((post, index) => (
 
-            <article
+            <motion.article
+
               className="blog_card"
+
               key={post._id}
+
+              initial={{
+                opacity: 0,
+                y: 40
+              }}
+
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
+
+              transition={{
+                duration: 0.7,
+                delay: index * 0.12
+              }}
             >
 
               {
@@ -121,7 +159,7 @@ function Blog() {
 
               </div>
 
-            </article>
+            </motion.article>
 
           ))
 

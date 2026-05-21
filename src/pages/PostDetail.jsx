@@ -13,9 +13,10 @@ import {
 
 from "react-router-dom";
 
-import "../styles/postdetail.css";
+import { motion }
+from "framer-motion";
 
-import Loader from "../components/Loader";
+import "../styles/postdetail.css";
 
 function PostDetail() {
 
@@ -24,39 +25,79 @@ function PostDetail() {
   const [post, setPost] =
     useState(null);
 
+  const [loading, setLoading] =
+    useState(true);
+
   useEffect(() => {
 
     axios.get(
-      "https://lucia-borghi-web.onrender.com/posts"
+      `https://lucia-borghi-web.onrender.com/posts/${id}`
     )
 
     .then((res) => {
 
-      const foundPost =
-        res.data.find(
+      setPost(res.data);
 
-          (p) =>
+      setLoading(false);
 
-            String(p._id) ===
-            String(id)
+    })
 
-        );
+    .catch(() => {
 
-      setPost(foundPost);
+      setLoading(false);
 
     });
 
   }, [id]);
 
+  if (loading) {
+
+    return (
+
+      <div className="loader_container">
+
+        <div className="loader_circle"></div>
+
+        <p>
+          cargando contenido...
+        </p>
+
+      </div>
+
+    );
+
+  }
+
   if (!post) {
 
-  return <Loader />;
+    return (
+      <h1>
+        Post no encontrado
+      </h1>
+    );
 
-}
+  }
 
   return (
 
-    <section className="post_detail">
+    <motion.section
+
+      className="post_detail"
+
+      initial={{
+        opacity: 0,
+        y: 40
+      }}
+
+      animate={{
+        opacity: 1,
+        y: 0
+      }}
+
+      transition={{
+        duration: 0.8
+      }}
+    >
 
       {
 
@@ -95,7 +136,7 @@ function PostDetail() {
         {post.fullText}
       </p>
 
-    </section>
+    </motion.section>
 
   );
 }
