@@ -13,7 +13,6 @@ function Home() {
       <ServicesPreview />
       <Testimonials />
       <Faq />
-      <CTA />
     </>
   );
 }
