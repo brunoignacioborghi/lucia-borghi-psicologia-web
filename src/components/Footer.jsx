@@ -9,6 +9,7 @@ function Footer() {
   const [copied, setCopied] = useState(false);
 
   const email = "brunoignacioborghi1@gmail.com";
+  const whatsapp = "https://wa.me/543512626619";
 
   const copyEmail = async () => {
     await navigator.clipboard.writeText(email);
@@ -44,7 +45,7 @@ function Footer() {
 
         </div>
 
-        {/* CRÉDITO DESARROLLADOR */}
+        {/* CRÉDITO DEV */}
         <div className="footer_dev">
 
           <p>
@@ -78,6 +79,20 @@ function Footer() {
             <button onClick={copyEmail}>
               {copied ? "Copiado ✔" : "Copiar mail"}
             </button>
+
+            {/* WHATSAPP BUTTON */}
+            <a
+              href={whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whatsapp_btn"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
+                alt="WhatsApp"
+              />
+              WhatsApp
+            </a>
 
           </div>
 

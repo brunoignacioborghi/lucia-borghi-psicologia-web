@@ -138,3 +138,33 @@
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
+
+.whatsapp_btn {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  background: #25D366;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.whatsapp_btn:hover {
+  opacity: 0.85;
+  transform: scale(1.03);
+}
+
+.whatsapp_btn img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
+}
