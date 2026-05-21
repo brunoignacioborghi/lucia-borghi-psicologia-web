@@ -13,6 +13,9 @@ import {
 
 from "react-router-dom";
 
+import { motion }
+from "framer-motion";
+
 import "../styles/postdetail.css";
 
 import Loader from "../components/Loader";
@@ -50,13 +53,30 @@ function PostDetail() {
 
   if (!post) {
 
-  return <Loader />;
+    return <Loader />;
 
-}
+  }
 
   return (
 
-    <section className="post_detail">
+    <motion.section
+
+      className="post_detail"
+
+      initial={{
+        opacity: 0,
+        y: 40
+      }}
+
+      animate={{
+        opacity: 1,
+        y: 0
+      }}
+
+      transition={{
+        duration: 0.8
+      }}
+    >
 
       {
 
@@ -95,7 +115,7 @@ function PostDetail() {
         {post.fullText}
       </p>
 
-    </section>
+    </motion.section>
 
   );
 }
