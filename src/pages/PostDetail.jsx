@@ -25,14 +25,19 @@ function PostDetail() {
   useEffect(() => {
 
     axios.get(
-      "https://render.com/docs/web-services#port-binding/posts"
+      "https://lucia-borghi-web.onrender.com/posts"
     )
 
     .then((res) => {
 
       const foundPost =
         res.data.find(
-          (p) => p._id === id
+
+          (p) =>
+
+            String(p._id) ===
+            String(id)
+
         );
 
       setPost(foundPost);
@@ -44,9 +49,15 @@ function PostDetail() {
   if (!post) {
 
     return (
-      <h1>
-        Post no encontrado
-      </h1>
+
+      <section className="post_detail">
+
+        <h1>
+          Cargando...
+        </h1>
+
+      </section>
+
     );
 
   }
