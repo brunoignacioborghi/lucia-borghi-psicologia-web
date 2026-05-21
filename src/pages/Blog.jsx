@@ -8,10 +8,15 @@ from "react-router-dom";
 
 import "../styles/blog.css";
 
+import Loader from "../components/Loader";
+
 function Blog() {
 
   const [posts, setPosts] =
     useState([]);
+
+  const [loading, setLoading] =
+  useState(true);
 
   useEffect(() => {
 
@@ -21,11 +26,21 @@ function Blog() {
 
     .then((res) => {
 
-      setPosts(res.data);
+        setPosts(res.data);
 
-    });
+        setLoading(false);
+
+        });
+    
 
   }, []);
+
+
+  if (loading) {
+
+  return <Loader />;
+
+}
 
   return (
 

@@ -15,6 +15,8 @@ from "react-router-dom";
 
 import "../styles/postdetail.css";
 
+import Loader from "../components/Loader";
+
 function PostDetail() {
 
   const { id } = useParams();
@@ -48,19 +50,9 @@ function PostDetail() {
 
   if (!post) {
 
-    return (
+  return <Loader />;
 
-      <section className="post_detail">
-
-        <h1>
-          Cargando...
-        </h1>
-
-      </section>
-
-    );
-
-  }
+}
 
   return (
 
